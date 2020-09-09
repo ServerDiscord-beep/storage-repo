@@ -1,0 +1,21 @@
+-- SETUP PROGRAM
+-- formats harddisk, copies sources over
+term.setBackgroundColour(colours.blue)
+term.setTextColour(colours.white)
+term.clear()
+term.setCursorPos(1,2)
+print("SpongeOS Setup")
+print("==============")
+print("\n\nWhen you are ready to format your disk and install SpongeOS, type 'y' and press enter/return.")
+local inp=io.read()
+if inp~="y" then os.shutdown() end
+shell.run("/disk/util/format.lua")
+shell.run("copy /disk/sources/* /")
+term.clear()
+term.setCursorPos(1,2)
+print("SpongeOS Setup")
+print("==============")
+print("\n\nSpongeOS has been loaded. You may need to do further setup.")
+print("\nRemove the disk and press enter/return.")
+io.read()
+os.reboot()
